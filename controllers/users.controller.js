@@ -1,6 +1,5 @@
 const {QueryTypes} = require('sequelize')
 const User = require('../models/user')
-const db = require('../utils/database')
 
 class UsersController {
     async getList (req, res) {
@@ -20,7 +19,7 @@ class UsersController {
             const user = await User.findOne({where: {id}})
             if (!user)
                 res.status(400).json({message: "User with id " + id + " doesn't exist"})
-            if(!usernameUnique(username)) 
+            if(!UsersController.isUsernameUnique(username)) 
                 res.status(400).json({message: `User with username ${username} already exists`})
             user.username = username
             await user.save()
