@@ -1,0 +1,106 @@
+* {
+    border-spacing: 0px;
+}
+
+.main-wrapper {
+    width: 50%;
+    margin: 0 auto;
+    padding-top: 30px;
+}
+
+table {
+    margin: 0 auto;
+    padding: 20px 20px;
+    border: 2px solid;
+    border-radius: 15px;
+    box-shadow: 5px 5px black;
+}
+
+tr:nth-child(even) {
+    background-color: #ffefb8;
+}
+
+.col-id {
+    width: 50px;
+    height: 40px;
+    text-align: center;
+    padding: 0 0;
+    border-bottom: 1px solid;
+}
+
+.col-username {
+    width: 100px;
+    text-align: center;
+    padding: 0 0;
+    border-bottom: 1px solid;
+}
+
+.col-rank {
+    width: 30px;
+    text-align: center;
+    padding: 0 0;
+    border-bottom: 1px solid;
+}
+
+.col-delete {
+    width: 70px;
+    text-align: center;
+    height: 40px;
+    padding-left: 10px;
+    border-bottom: 1px solid;
+}
+
+span {
+    width: 50px;
+    height: 40px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight: lighter;
+}
+
+.input-username {
+    width: 150px;
+    height: 40px;
+    padding: 0 2px;
+    border: none;
+    background-color: transparent;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.input-add-username {
+    padding: 1px 2px;
+    width: 150px;
+    border: none;
+}
+
+.input-add-rank {
+    width: 50px;
+    padding: 1px 2px;
+    border: none;
+}
+
+input:focus, select:focus {
+    outline: none;
+}
+
+.select-rank {
+    width: 50px;
+    height: 40px;
+    border: none;
+    background-color: transparent;
+}
+
+
+.delete-button, .add-button {
+    width: 60px;
+    height: 30px;
+    background-color: transparent;
+    border-radius: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    transition-duration: 0.2s;
+}
+
+.delete-button:hover, .add-button:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}

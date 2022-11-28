@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Aleannlab test task</title>
+        <link rel="stylesheet" type="text/css" href="styles.css"/>
+    </head>
+    <body>
+        <div>
+            <div class="main-wrapper">
+                <form class="add" id="add-form"></form>
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="col-id"><span>Id</span></th> 
+                            <th class="col-username"><span>Username</span></th> 
+                            <th class="col-rank"><span>Rank</span></th>
+                            <th class="col-delete"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="table-body">
+                    </tbody>
+                    <tfoot>
+                        <tr>
+                            <td class="col-id"><span class="add-span">Add:</span></td>
+                            <td class="col-username"><input name="username" placeholder="Username" autocomplete="off" required=true class="input-add-username" form="add-form"/></td>
+                            <td class="col-rank"><input name="rank" placeholder="Rank" required=true class="input-add-rank" form="add-form"/></td>
+                            <td class="col-delete"><input type="submit" value="Add" class="add-button" form="add-form"/></td>
+                        </tr>
+                    </tfoot>
+                </table>
+                <script src="/js/table.js"></script>
+                <script src="/js/addUser.js"></script>
+                <script>
+                    function onChangeUsername (id) {
+                        var newUsername = document.getElementById(`username_${id}`)
+                        fetch(`http://localhost:5000/api/users/${id}/edit`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({"username": newUsername.value})
+                        })
+                        .then(res => res.json())
+                        .then(data => alert(data.message))
+                        .catch(error => console.log(error))
+                        location.reload()
+                    }
+                    function onChangeRank (id) {
+                        var newRank = document.getElementById(`rank_${id}`)
+                        fetch(`http://localhost:5000/api/users/${id}/change`, {
+                            method: 'PATCH',
+                            headers: {
+                                'Content-Type': 'application/json'
+                            },
+                            body: JSON.stringify({"rank": newRank.value})
+                        })
+                        .then(res => res.json())
+                        .then(data => alert(data.message))
+                        .catch(error => console.log(error))
+                        location.reload()
+                    }
+                    function onClickDelete (id) {
+                        fetch(`http://localhost:5000/api/users/${id}/delete`, {method: 'DELETE'})
+                        .then(res => res.json())
+                        .then(data => alert(data.message))
+                        .catch(error => console.log(error))
+                        location.reload()
+                    }
+                </script>
+            </div>
+        </div>
+    </body>
+</html>
